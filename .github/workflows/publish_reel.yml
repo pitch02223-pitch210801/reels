@@ -25,7 +25,7 @@ on:
     - cron: "0 3 1 * *"      # 매월 1일 — 60일 토큰 자동 갱신
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   run:
@@ -38,6 +38,7 @@ jobs:
       - run: pip install --quiet requests pynacl
       - name: 실행
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           IG_TOKEN: ${{ secrets.IG_TOKEN }}
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
           GH_PAT: ${{ secrets.GH_PAT }}
