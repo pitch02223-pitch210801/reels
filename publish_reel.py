@@ -22,8 +22,31 @@ def mask(s):
     return str(s).replace(TOK, "***")
 
 
+def write_status(obj):
+    """결과를 저장소 _status/last_run.json 에 남긴다 (로그 다운로드가 막힌 환경 대비)."""
+    import base64 as _b64
+    gt = os.environ.get("GITHUB_TOKEN")
+    if not gt:
+        return
+    obj = {k: mask(v) if isinstance(v, str) else v for k, v in obj.items()}
+    obj["run_url"] = f"https://github.com/{REPO}/actions/runs/{os.environ.get('GITHUB_RUN_ID','')}"
+    body = json.dumps(obj, ensure_ascii=False, indent=2)
+    h = {"Authorization": f"token {gt}", "Accept": "application/vnd.github+json"}
+    api = f"https://api.github.com/repos/{REPO}/contents/_status/last_run.json"
+    sha = None
+    g = requests.get(api, headers=h, params={"ref": "main"}, timeout=30)
+    if g.status_code == 200:
+        sha = g.json().get("sha")
+    d = {"message": f"status: {obj.get('mode','')}", "branch": "main",
+         "content": _b64.b64encode(body.encode()).decode()}
+    if sha:
+        d["sha"] = sha
+    requests.put(api, headers=h, json=d, timeout=60)
+
+
 def die(msg):
     print("::error::" + mask(msg))
+    write_status({"mode": MODE, "ok": False, "error": mask(msg)})
     sys.exit(1)
 
 
@@ -46,7 +69,14 @@ def show(items):
 
 
 def do_check():
-    show(recent())
+    items = recent()
+    show(items)
+    write_status({"mode": "check", "ok": True,
+                  "recent": [{"t": m["timestamp"], "type": m["media_type"],
+                              "url": m["permalink"],
+                              "head": (m.get("caption") or "").splitlines()[0][:60]
+                                      if (m.get("caption") or "") else ""}
+                             for m in items]})
 
 
 def do_publish():
@@ -112,6 +142,8 @@ def do_publish():
     print(f"PERMALINK={link}")
     with open(os.environ.get("GITHUB_STEP_SUMMARY", "/dev/null"), "a", encoding="utf-8") as f:
         f.write(f"## 발행 완료\n\n- {link}\n- media_id: {mid}\n")
+    write_status({"mode": "publish", "ok": True, "permalink": link,
+                  "media_id": mid, "video": video, "cover": cover, "caption_file": capf})
 
 
 def do_refresh():
@@ -134,6 +166,7 @@ def do_refresh():
     if rr.status_code not in (201, 204):
         die(f"시크릿 저장 실패 {rr.status_code}")
     print(f"::notice::토큰 갱신 완료 (만료 {j.get('expires_in','?')}초 뒤)")
+    write_status({"mode": "refresh", "ok": True, "expires_in": j.get("expires_in")})
 
 
 {"check": do_check, "publish": do_publish, "refresh": do_refresh}.get(MODE, do_check)()
