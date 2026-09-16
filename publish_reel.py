@@ -50,7 +50,7 @@ def die(msg):
     sys.exit(1)
 
 
-def recent(limit=10):
+def recent(limit=30):
     r = requests.get(f"{GRAPH}/{API}/{IG}/media",
                      params={"fields": "id,timestamp,permalink,media_type,caption",
                              "limit": limit, "access_token": TOK}, timeout=60)
