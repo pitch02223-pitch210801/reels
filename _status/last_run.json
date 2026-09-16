@@ -1,10 +1,67 @@
 {
-  "mode": "publish",
+  "mode": "check",
   "ok": true,
-  "permalink": "https://www.instagram.com/reel/DdWOyJ6jr1o/",
-  "media_id": "17901841998588965",
-  "video": "info_reel_09.mp4",
-  "cover": "cover_info_09.jpg",
-  "caption_file": "caption_info_09.txt",
-  "run_url": "https://github.com/pitch02223-pitch210801/reels/actions/runs/35093093711"
+  "recent": [
+    {
+      "t": "2026-09-16T11:58:04+0000",
+      "type": "VIDEO",
+      "url": "https://www.instagram.com/reel/DdWOyJ6jr1o/",
+      "head": "마감은 잘 뽑았는데 조명 색 하나로 싸 보이는 집이 있습니다."
+    },
+    {
+      "t": "2026-09-08T01:07:11+0000",
+      "type": "CAROUSEL_ALBUM",
+      "url": "https://www.instagram.com/p/DdAd9YGj2Mf/",
+      "head": "강남 시시오 獅子王 · 일본라멘"
+    },
+    {
+      "t": "2026-09-04T09:44:38+0000",
+      "type": "VIDEO",
+      "url": "https://www.instagram.com/reel/Dc3F_jmlG7K/",
+      "head": "술집 객단가는 '한 잔 더'에서 갈립니다."
+    },
+    {
+      "t": "2026-08-28T01:47:46+0000",
+      "type": "VIDEO",
+      "url": "https://www.instagram.com/reel/DckNyFjD-lo/",
+      "head": "작은 가게일수록 '넓어 보이게'는 답이 아닙니다."
+    },
+    {
+      "t": "2026-08-22T18:02:25+0000",
+      "type": "CAROUSEL_ALBUM",
+      "url": "https://www.instagram.com/p/DcWglmoj3tT/",
+      "head": "의왕 이층식당 윤경 · 한식"
+    },
+    {
+      "t": "2026-08-20T07:03:39+0000",
+      "type": "VIDEO",
+      "url": "https://www.instagram.com/reel/DcQLjr3Dke-/",
+      "head": "제일 싼 견적서가, 결국 제일 비싸집니다."
+    },
+    {
+      "t": "2026-08-19T01:28:28+0000",
+      "type": "VIDEO",
+      "url": "https://www.instagram.com/reel/DcNAcQsj0bT/",
+      "head": "상가 계약부터 하고 오시면, 이미 늦습니다."
+    },
+    {
+      "t": "2026-08-18T03:46:23+0000",
+      "type": "VIDEO",
+      "url": "https://www.instagram.com/reel/DcKrd70jmtt/",
+      "head": "같은 매출인데 인건비만 더 나가는 식당, 범인은 '주방 배치'일 때가 많습니다."
+    },
+    {
+      "t": "2026-08-18T03:26:02+0000",
+      "type": "VIDEO",
+      "url": "https://www.instagram.com/reel/DcKpGaik3uM/",
+      "head": "노포가 낡아 보이면, 손님은 그냥 지나칩니다."
+    },
+    {
+      "t": "2026-08-18T03:24:58+0000",
+      "type": "CAROUSEL_ALBUM",
+      "url": "https://www.instagram.com/p/DcKpDKkj8GY/",
+      "head": "평택 속초할매 생태동태탕 — 오래된 이름은 남기고, 장사되는 구조로 새로 짰습니다."
+    }
+  ],
+  "run_url": "https://github.com/pitch02223-pitch210801/reels/actions/runs/35093644100"
 }
