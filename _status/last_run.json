@@ -1,10 +1,151 @@
 {
-  "mode": "publish",
+  "mode": "check",
   "ok": true,
-  "permalink": "https://www.instagram.com/reel/DdWR14XDu5n/",
-  "media_id": "18113489057323331",
-  "video": "sisio_reel.mp4",
-  "cover": "cover_sisio.jpg",
-  "caption_file": "caption_sisio.txt",
-  "run_url": "https://github.com/pitch02223-pitch210801/reels/actions/runs/35095599131"
+  "recent": [
+    {
+      "t": "2026-09-16T12:24:50+0000",
+      "type": "VIDEO",
+      "url": "https://www.instagram.com/reel/DdWR14XDu5n/",
+      "head": "계단 앞에서 돌아서는 손님을 잡는 법 — 강남 시시오 獅子王 · 일본라멘"
+    },
+    {
+      "t": "2026-09-16T11:58:04+0000",
+      "type": "VIDEO",
+      "url": "https://www.instagram.com/reel/DdWOyJ6jr1o/",
+      "head": "마감은 잘 뽑았는데 조명 색 하나로 싸 보이는 집이 있습니다."
+    },
+    {
+      "t": "2026-09-08T01:07:11+0000",
+      "type": "CAROUSEL_ALBUM",
+      "url": "https://www.instagram.com/p/DdAd9YGj2Mf/",
+      "head": "강남 시시오 獅子王 · 일본라멘"
+    },
+    {
+      "t": "2026-09-04T09:44:38+0000",
+      "type": "VIDEO",
+      "url": "https://www.instagram.com/reel/Dc3F_jmlG7K/",
+      "head": "술집 객단가는 '한 잔 더'에서 갈립니다."
+    },
+    {
+      "t": "2026-08-28T01:47:46+0000",
+      "type": "VIDEO",
+      "url": "https://www.instagram.com/reel/DckNyFjD-lo/",
+      "head": "작은 가게일수록 '넓어 보이게'는 답이 아닙니다."
+    },
+    {
+      "t": "2026-08-22T18:02:25+0000",
+      "type": "CAROUSEL_ALBUM",
+      "url": "https://www.instagram.com/p/DcWglmoj3tT/",
+      "head": "의왕 이층식당 윤경 · 한식"
+    },
+    {
+      "t": "2026-08-20T07:03:39+0000",
+      "type": "VIDEO",
+      "url": "https://www.instagram.com/reel/DcQLjr3Dke-/",
+      "head": "제일 싼 견적서가, 결국 제일 비싸집니다."
+    },
+    {
+      "t": "2026-08-19T01:28:28+0000",
+      "type": "VIDEO",
+      "url": "https://www.instagram.com/reel/DcNAcQsj0bT/",
+      "head": "상가 계약부터 하고 오시면, 이미 늦습니다."
+    },
+    {
+      "t": "2026-08-18T03:46:23+0000",
+      "type": "VIDEO",
+      "url": "https://www.instagram.com/reel/DcKrd70jmtt/",
+      "head": "같은 매출인데 인건비만 더 나가는 식당, 범인은 '주방 배치'일 때가 많습니다."
+    },
+    {
+      "t": "2026-08-18T03:26:02+0000",
+      "type": "VIDEO",
+      "url": "https://www.instagram.com/reel/DcKpGaik3uM/",
+      "head": "노포가 낡아 보이면, 손님은 그냥 지나칩니다."
+    },
+    {
+      "t": "2026-08-18T03:24:58+0000",
+      "type": "CAROUSEL_ALBUM",
+      "url": "https://www.instagram.com/p/DcKpDKkj8GY/",
+      "head": "평택 속초할매 생태동태탕 — 오래된 이름은 남기고, 장사되는 구조로 새로 짰습니다."
+    },
+    {
+      "t": "2026-08-11T05:40:44+0000",
+      "type": "VIDEO",
+      "url": "https://www.instagram.com/reel/Db42-UigvHL/",
+      "head": "헤어샵 매출은 '한 번 온 손님'이 아니라 '다시 오는 손님'에서 갈립니다."
+    },
+    {
+      "t": "2026-08-11T05:39:44+0000",
+      "type": "VIDEO",
+      "url": "https://www.instagram.com/reel/Db422QdDTkE/",
+      "head": "한 잔 더, 를 만드는 건 메뉴가 아니라 공간입니다 🍷"
+    },
+    {
+      "t": "2026-08-11T05:04:20+0000",
+      "type": "VIDEO",
+      "url": "https://www.instagram.com/reel/Db4yg_DEsV0/",
+      "head": "손님이 '금방' 나가는 카페엔 이유가 있습니다."
+    },
+    {
+      "t": "2026-08-10T04:05:13+0000",
+      "type": "CAROUSEL_ALBUM",
+      "url": "https://www.instagram.com/p/Db2HT6CkyA1/",
+      "head": "한 잔 더, 를 만드는 건 메뉴가 아니라 공간입니다 🍷"
+    },
+    {
+      "t": "2026-08-03T00:19:28+0000",
+      "type": "CAROUSEL_ALBUM",
+      "url": "https://www.instagram.com/p/Dbjr6Vlkyon/",
+      "head": "헤어샵 매출은 '한 번 온 손님'이 아니라 '다시 오는 손님'에서 갈립니다."
+    },
+    {
+      "t": "2026-07-28T03:51:55+0000",
+      "type": "VIDEO",
+      "url": "https://www.instagram.com/reel/DbUnbQJRQu8/",
+      "head": "좁은 골목의 작은 카페. 그런데 문을 열고 들어오게 만듭니다."
+    },
+    {
+      "t": "2026-07-27T13:24:00+0000",
+      "type": "CAROUSEL_ALBUM",
+      "url": "https://www.instagram.com/p/DbTEIVIk62I/",
+      "head": "좁은 골목의 작은 카페. 그런데 문을 열고 들어오게 만듭니다."
+    },
+    {
+      "t": "2026-07-26T14:42:46+0000",
+      "type": "VIDEO",
+      "url": "https://www.instagram.com/reel/DbQoR-XRt91/",
+      "head": "인테리어 예쁘게 했는데 장사가 안 되는 집, 이유가 있습니다."
+    },
+    {
+      "t": "2026-07-20T01:36:41+0000",
+      "type": "CAROUSEL_ALBUM",
+      "url": "https://www.instagram.com/p/Da_xnvwk_7z/",
+      "head": "감자탕집이 강남에서 살아남는 법."
+    },
+    {
+      "t": "2026-07-20T00:45:05+0000",
+      "type": "VIDEO",
+      "url": "https://www.instagram.com/reel/Da_rrilxw7W/",
+      "head": "한우갈비 한 점의 값은, 문을 열기 전에 이미 정해집니다."
+    },
+    {
+      "t": "2026-07-20T00:40:48+0000",
+      "type": "VIDEO",
+      "url": "https://www.instagram.com/reel/Da_rMdfxYvY/",
+      "head": "2026 MUSE Design Awards — GOLD WINNER 🏆"
+    },
+    {
+      "t": "2026-07-13T15:46:14+0000",
+      "type": "CAROUSEL_ALBUM",
+      "url": "https://www.instagram.com/p/DavRR2zE2JG/",
+      "head": "2026 MUSE Design Awards — GOLD WINNER 🏆"
+    },
+    {
+      "t": "2026-07-13T14:24:07+0000",
+      "type": "CAROUSEL_ALBUM",
+      "url": "https://www.instagram.com/p/DavH4Zek-q-/",
+      "head": "한우갈비 한 점의 값은, 문을 열기 전에 이미 정해집니다."
+    }
+  ],
+  "run_url": "https://github.com/pitch02223-pitch210801/reels/actions/runs/35095712173"
 }
