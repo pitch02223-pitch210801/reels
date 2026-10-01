@@ -1,10 +1,6 @@
 {
-  "mode": "publish",
+  "mode": "refresh",
   "ok": true,
-  "permalink": "https://www.instagram.com/reel/Dd5kSb0k-R3/",
-  "media_id": "18392627317165612",
-  "video": "info_reel_12.mp4",
-  "cover": "cover_info_12.jpg",
-  "caption_file": "caption_info_12.txt",
-  "run_url": "https://github.com/pitch02223-pitch210801/reels/actions/runs/36672770006"
+  "expires_in": 5184000,
+  "run_url": "https://github.com/pitch02223-pitch210801/reels/actions/runs/36843689737"
 }
