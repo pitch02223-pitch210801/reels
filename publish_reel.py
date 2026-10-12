@@ -5,6 +5,7 @@
 
 MODE=check    최근 게시물 조회 (중복 발행 점검용)
 MODE=publish  VIDEO/COVER/CAPTION 으로 릴스 발행
+MODE=carousel IMAGES(쉼표구분)/CAPTION 으로 캐러셀 발행
 MODE=refresh  60일 장기 토큰 갱신 후 IG_TOKEN 시크릿 갱신
 """
 import base64, json, os, sys, time, requests
@@ -146,6 +147,87 @@ def do_publish():
                   "media_id": mid, "video": video, "cover": cover, "caption_file": capf})
 
 
+def _dup_guard(head, force):
+    items = recent()
+    show(items)
+    dup = [m for m in items if (m.get("caption") or "").strip().startswith(head[:30])]
+    if dup and not force:
+        die(f"중복 의심 — 같은 첫 줄의 게시물이 이미 있음: {dup[0]['permalink']} ({dup[0]['timestamp']}). "
+            f"의도한 재발행이면 force=true 로 다시 실행.")
+
+
+def _wait(cid, label=""):
+    for i in range(20):
+        time.sleep(10)
+        s = requests.get(f"{GRAPH}/{API}/{cid}", timeout=60,
+                         params={"fields": "status_code,status", "access_token": TOK}).json()
+        code = s.get("status_code")
+        print(f"  [{label}{i+1}] status={code}")
+        if code == "FINISHED":
+            return
+        if code in ("ERROR", "EXPIRED"):
+            die(f"처리 실패({label}): {json.dumps(s, ensure_ascii=False)}")
+    die(f"시간 내 FINISHED 안 됨({label})")
+
+
+def do_carousel():
+    """IMAGES=쉼표로 구분된 저장소 내 이미지 경로. 2~10장."""
+    imgs = [x.strip() for x in os.environ["IMAGES"].split(",") if x.strip()]
+    capf = os.environ["CAPTION"].strip()
+    force = os.environ.get("FORCE", "false").lower() == "true"
+
+    if not (2 <= len(imgs) <= 10):
+        die(f"캐러셀은 2~10장이어야 함 (받은 수: {len(imgs)})")
+    if not os.path.exists(capf):
+        die(f"캡션 파일 없음: {capf}")
+    caption = open(capf, encoding="utf-8").read().strip()
+    head = caption.splitlines()[0].strip()
+
+    for f in imgs:
+        if not os.path.exists(f):
+            die(f"파일 없음: {f} (저장소에 push 됐는지 확인)")
+
+    _dup_guard(head, force)
+
+    children = []
+    for n, f in enumerate(imgs, 1):
+        url = f"{RAW}/{f}"
+        if requests.head(url, timeout=60, allow_redirects=True).status_code != 200:
+            die(f"공개 URL 접근 불가: {url}")
+        r = requests.post(f"{GRAPH}/{API}/{IG}/media", timeout=120,
+                          data={"image_url": url, "is_carousel_item": "true",
+                                "access_token": TOK})
+        j = r.json()
+        if "id" not in j:
+            die(f"아이템 컨테이너 실패({f}): {json.dumps(j, ensure_ascii=False)}")
+        print(f"  item {n}/{len(imgs)} {f} -> {j['id']}")
+        children.append(j["id"])
+
+    r = requests.post(f"{GRAPH}/{API}/{IG}/media", timeout=120,
+                      data={"media_type": "CAROUSEL", "children": ",".join(children),
+                            "caption": caption, "access_token": TOK})
+    j = r.json()
+    if "id" not in j:
+        die(f"캐러셀 컨테이너 생성 실패: {json.dumps(j, ensure_ascii=False)}")
+    cid = j["id"]
+    print(f"carousel_container_id={cid}")
+    _wait(cid, "carousel ")
+
+    p = requests.post(f"{GRAPH}/{API}/{IG}/media_publish", timeout=120,
+                      data={"creation_id": cid, "access_token": TOK}).json()
+    if "id" not in p:
+        die(f"발행 실패: {json.dumps(p, ensure_ascii=False)}")
+    mid = p["id"]
+    link = requests.get(f"{GRAPH}/{API}/{mid}", timeout=60,
+                        params={"fields": "permalink", "access_token": TOK}).json().get("permalink", "")
+    print(f"::notice::캐러셀 발행 완료 {link}")
+    print(f"PERMALINK={link}")
+    with open(os.environ.get("GITHUB_STEP_SUMMARY", "/dev/null"), "a", encoding="utf-8") as f:
+        f.write(f"## 캐러셀 발행 완료\n\n- {link}\n- media_id: {mid}\n- {len(imgs)}장\n")
+    write_status({"mode": "carousel", "ok": True, "permalink": link,
+                  "media_id": mid, "images": imgs, "caption_file": capf})
+
+
 def do_refresh():
     j = requests.get(f"{GRAPH}/refresh_access_token", timeout=60,
                      params={"grant_type": "ig_refresh_token", "access_token": TOK}).json()
@@ -169,4 +251,5 @@ def do_refresh():
     write_status({"mode": "refresh", "ok": True, "expires_in": j.get("expires_in")})
 
 
-{"check": do_check, "publish": do_publish, "refresh": do_refresh}.get(MODE, do_check)()
+{"check": do_check, "publish": do_publish, "carousel": do_carousel,
+ "refresh": do_refresh}.get(MODE, do_check)()
