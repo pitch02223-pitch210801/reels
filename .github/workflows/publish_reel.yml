@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "check=최근 게시물만 조회 / publish=발행 / refresh=토큰갱신"
+        description: "check=조회 / publish=릴스발행 / carousel=캐러셀발행 / refresh=토큰갱신"
         type: choice
-        options: [check, publish, refresh]
+        options: [check, publish, carousel, refresh]
         default: check
       video:
         description: "영상 파일명 (예: info_reel_09.mp4)"
@@ -16,6 +16,9 @@ on:
         default: ""
       caption:
         description: "캡션 파일명 (예: caption_info_09.txt)"
+        default: ""
+      images:
+        description: "캐러셀 이미지 파일명 쉼표구분 (예: cw/01.jpg,cw/02.jpg)"
         default: ""
       force:
         description: "중복 점검을 무시하고 강제 발행"
@@ -46,5 +49,6 @@ jobs:
           VIDEO: ${{ inputs.video }}
           COVER: ${{ inputs.cover }}
           CAPTION: ${{ inputs.caption }}
+          IMAGES: ${{ inputs.images }}
           FORCE: ${{ inputs.force }}
         run: python publish_reel.py
