@@ -1,0 +1,28 @@
+name: 예약 발행 (대기열)
+
+# 토요일 17:00 KST(= 08:00 UTC). _queue/next.json 이 비어 있으면 아무 것도 안 한다.
+# 대표님 컴퓨터도 Claude 세션도 그날 필요 없다.
+on:
+  schedule:
+    - cron: "0 8 * * 6"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install --quiet requests pynacl
+      - name: 대기열 발행
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          GH_PAT: ${{ secrets.GH_PAT }}
+        run: python publish_queue.py
