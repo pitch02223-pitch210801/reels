@@ -1,4 +1,8 @@
 {
-  "cleared_at": "2026-10-17T12:01:20.780830+00:00",
-  "note": "reel 발행 완료"
+  "kind": "reel",
+  "video": "jeongchan_reel.mp4",
+  "cover": "cover_jeongchan.jpg",
+  "caption": "caption_jeongchan_reel.txt",
+  "not_before": "2026-10-24T08:00:00Z",
+  "note": "동대문 정찬순대국 포트폴리오 릴스 — 10/19 캐러셀의 짝. 토요일 17:00 KST 발행 예약"
 }
