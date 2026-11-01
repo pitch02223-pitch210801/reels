@@ -1,10 +1,6 @@
 {
-  "mode": "publish",
+  "mode": "refresh",
   "ok": true,
-  "permalink": "https://www.instagram.com/reel/DfKXLMfCgxc/",
-  "media_id": "17960317797259405",
-  "video": "riyenchai_reel.mp4",
-  "cover": "cover_riyenchai.jpg",
-  "caption_file": "caption_riyenchai_reel.txt",
-  "run_url": "https://github.com/pitch02223-pitch210801/reels/actions/runs/41209833345"
+  "expires_in": 5184000,
+  "run_url": "https://github.com/pitch02223-pitch210801/reels/actions/runs/41295052516"
 }
